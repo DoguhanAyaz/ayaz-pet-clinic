@@ -1,4 +1,4 @@
-package com.ayaz.ayazpetclinic;
+package ayaz.com.ayazpetclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
