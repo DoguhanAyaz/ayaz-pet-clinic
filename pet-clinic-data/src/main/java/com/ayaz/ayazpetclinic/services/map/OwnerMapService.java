@@ -2,9 +2,11 @@ package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.Owner;
 import com.ayaz.ayazpetclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerMapService extends AbstractMapService<Owner , Long > implements OwnerService {
     @Override
     public Owner findById(Long id) {

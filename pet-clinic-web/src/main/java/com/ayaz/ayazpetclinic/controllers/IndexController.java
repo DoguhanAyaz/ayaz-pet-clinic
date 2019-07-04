@@ -1,4 +1,4 @@
-package ayaz.com.ayazpetclinic.controllers;
+package com.ayaz.ayazpetclinic.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
