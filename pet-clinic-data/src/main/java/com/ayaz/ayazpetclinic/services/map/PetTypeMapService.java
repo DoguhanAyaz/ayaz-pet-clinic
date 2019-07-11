@@ -2,9 +2,11 @@ package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.PetType;
 import com.ayaz.ayazpetclinic.services.PetTypeService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetTypeMapService extends AbstractMapService<PetType,Long> implements PetTypeService {
 
     @Override
@@ -29,7 +31,7 @@ public class PetTypeMapService extends AbstractMapService<PetType,Long> implemen
 
     @Override
     public PetType save(PetType object) {
-        return null;
+        return super.save(object);
     }
 
 }

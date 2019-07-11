@@ -2,10 +2,12 @@ package com.ayaz.ayazpetclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet extends BaseEntity{
-    PetType petType;
-    Owner Owner;
-    LocalDate birthDate;
+public class Pet extends BaseEntity {
+
+    private String name;
+    private PetType petType;
+    private Owner Owner;
+    private LocalDate birthDate;
 
     public PetType getPetType() {
         return petType;
@@ -29,5 +31,13 @@ public class Pet extends BaseEntity{
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
