@@ -1,13 +1,13 @@
 package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.Speciality;
-import com.ayaz.ayazpetclinic.services.SpecialtiesService;
+import com.ayaz.ayazpetclinic.services.SpecialityService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialitiesMapService extends AbstractMapService<Speciality, Long> implements SpecialtiesService {
+public class SpecialitiesMapService extends AbstractMapService<Speciality, Long> implements SpecialityService {
 
     @Override
     public Speciality findById(Long id) {
