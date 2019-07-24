@@ -1,12 +1,11 @@
 package com.ayaz.ayazpetclinic.controllers;
 
 import com.ayaz.ayazpetclinic.services.OwnerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+@RequestMapping("/owners")
 @Controller
 public class OwnerController {
 
@@ -16,10 +15,15 @@ public class OwnerController {
         this.ownerService = ownerService;
     }
 
-    @RequestMapping({"/owners","owners/index","owners/index.html"})
+    @RequestMapping({"","/","/index","/index.html"})
     public String ListOfOwner(Model model)
     {
         model.addAttribute("owners",ownerService.findAll());
         return "owners/index";
     }
+    @RequestMapping("/find")
+    public String findOwners(){
+        return "notimplemented";
+    }
+
 }
