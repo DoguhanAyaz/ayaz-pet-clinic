@@ -12,7 +12,8 @@ public class Visit extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name ="pet_id")
     private Pet pet;
 
     public Pet getPet() {
