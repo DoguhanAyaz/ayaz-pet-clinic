@@ -11,8 +11,8 @@ public class Owner extends Person {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "telephone")
     private String telephone;
@@ -28,12 +28,12 @@ public class Owner extends Person {
         this.city = city;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTelephone() {

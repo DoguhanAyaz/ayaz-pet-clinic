@@ -63,7 +63,7 @@ public class DataLoader implements CommandLineRunner {
 
         owner1.setFirstName("Doguhan");
         owner1.setLastName("Ayaz");
-        owner1.setAdress("Akıncılar mah. Posta cad. Yavuz sok. no:18/8");
+        owner1.setAddress("Akıncılar mah. Posta cad. Yavuz sok. no:18/8");
         owner1.setCity("Istnabul");
         owner1.setTelephone("+905365491115");
 
@@ -81,7 +81,7 @@ public class DataLoader implements CommandLineRunner {
 
         owner2.setFirstName("Nazlı");
         owner2.setLastName("Ayaz");
-        owner1.setAdress("Cambridge aveneue No:18/8");
+        owner1.setAddress("Cambridge aveneue No:18/8");
         owner1.setCity("London");
         owner1.setTelephone("+905367073275");
 
