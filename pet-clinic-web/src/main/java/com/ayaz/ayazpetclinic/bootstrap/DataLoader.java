@@ -1,10 +1,7 @@
 package com.ayaz.ayazpetclinic.bootstrap;
 
 import com.ayaz.ayazpetclinic.model.*;
-import com.ayaz.ayazpetclinic.services.OwnerService;
-import com.ayaz.ayazpetclinic.services.PetTypeService;
-import com.ayaz.ayazpetclinic.services.SpecialityService;
-import com.ayaz.ayazpetclinic.services.VetService;
+import com.ayaz.ayazpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +14,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
 
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -59,6 +58,7 @@ public class DataLoader implements CommandLineRunner {
         Speciality savedDentistry = specialityService.save(dentistry);
 
 
+
         Owner owner1 = new Owner();
 
         owner1.setFirstName("Doguhan");
@@ -75,6 +75,14 @@ public class DataLoader implements CommandLineRunner {
         owner1.getPets().add(doguhansMet);
 
         ownerService.save(owner1);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(doguhansMet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Cat Visit");
+        Visit savedVisit = visitService.save(catVisit);
+
+
 
 //        OWNER 2
         Owner owner2 = new Owner();

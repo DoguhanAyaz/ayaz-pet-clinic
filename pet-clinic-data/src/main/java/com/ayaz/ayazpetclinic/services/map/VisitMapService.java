@@ -2,10 +2,12 @@ package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.Visit;
 import com.ayaz.ayazpetclinic.services.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class VisitMapService extends AbstractMapService<Visit , Long> implements VisitService {
+@Service
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Visit findById(Long id) {
         return super.findById(id);
@@ -28,6 +30,13 @@ public class VisitMapService extends AbstractMapService<Visit , Long> implements
 
     @Override
     public Visit save(Visit object) {
+        if (object.getPet() == null || object.getPet().getOwner() == null ||
+                object.getPet().getId() == null || object.getPet().getOwner().getId() == null) {
+            throw new RuntimeException("There is no such a visit");
+        }
+
         return super.save(object);
+
+
     }
 }
