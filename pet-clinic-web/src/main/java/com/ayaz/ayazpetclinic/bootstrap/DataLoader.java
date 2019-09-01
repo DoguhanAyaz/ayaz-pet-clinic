@@ -2,12 +2,14 @@ package com.ayaz.ayazpetclinic.bootstrap;
 
 import com.ayaz.ayazpetclinic.model.*;
 import com.ayaz.ayazpetclinic.services.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
+@Slf4j
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
@@ -66,6 +68,8 @@ public class DataLoader implements CommandLineRunner {
         owner1.setAddress("Akıncılar mah. Posta cad. Yavuz sok. no:18/8");
         owner1.setCity("Istnabul");
         owner1.setTelephone("+905365491115");
+
+
 
         Pet doguhansMet = new Pet();
         doguhansMet.setPetType(saveCatPetType);

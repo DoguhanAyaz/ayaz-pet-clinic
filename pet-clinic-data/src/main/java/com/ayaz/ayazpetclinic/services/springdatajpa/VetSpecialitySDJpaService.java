@@ -3,6 +3,7 @@ package com.ayaz.ayazpetclinic.services.springdatajpa;
 import com.ayaz.ayazpetclinic.Repositories.SpecialityRepository;
 import com.ayaz.ayazpetclinic.model.Speciality;
 import com.ayaz.ayazpetclinic.services.SpecialityService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Slf4j
 @Profile("springdatajpa")
 public class VetSpecialitySDJpaService implements SpecialityService {
 

@@ -5,6 +5,7 @@ import com.ayaz.ayazpetclinic.Repositories.PetRepository;
 import com.ayaz.ayazpetclinic.Repositories.PetTypeRepository;
 import com.ayaz.ayazpetclinic.model.Owner;
 import com.ayaz.ayazpetclinic.services.OwnerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Slf4j
 @Profile("springdatajpa")
 public class OwnerSDJpaService implements OwnerService {
 

@@ -1,11 +1,12 @@
 package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.BaseEntity;
-import org.springframework.context.annotation.Profile;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Slf4j
 @Service
 public abstract class AbstractMapService<T extends BaseEntity , ID extends Long> {
 

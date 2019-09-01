@@ -3,6 +3,7 @@ package com.ayaz.ayazpetclinic.services.springdatajpa;
 import com.ayaz.ayazpetclinic.Repositories.PetRepository;
 import com.ayaz.ayazpetclinic.model.Pet;
 import com.ayaz.ayazpetclinic.services.PetService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@Slf4j
 @Profile("springdatajpa")
 public class PetSDJpaService implements PetService {
 
