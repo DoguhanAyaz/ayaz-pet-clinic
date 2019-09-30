@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Service
 @Slf4j
-@Profile({"default","map"})
+@Profile({"default", "map"})
 
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
@@ -74,6 +74,6 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findByLastName(String lastName) {
 
-        return findByLastName(lastName);
+        return this.findAll().stream().filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).findFirst().orElse(null);
     }
 }
