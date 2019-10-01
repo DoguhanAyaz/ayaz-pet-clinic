@@ -69,7 +69,7 @@ class OwnerSDJpaServiceTest {
     @Test
     void save() {
         Owner saveOwner = Owner.builder().id(1L).build();
-        when(ownerRepository.save(any())).thenReturn(returnOwner);
+        when(ownerRepository.save(any())).thenReturn(saveOwner);
         Owner savedOwner = service.save(saveOwner);
         assertNotNull(savedOwner);
     }
