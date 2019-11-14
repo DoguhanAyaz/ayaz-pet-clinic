@@ -1,6 +1,7 @@
 package com.ayaz.ayazpetclinic.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,6 +17,17 @@ import java.util.Set;
 @Table(name = "pets")
 public class Pet extends BaseEntity {
 
+    @Builder
+    public Pet(Long Id, String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
+        super(Id);
+        this.name = name;
+        this.petType = petType;
+        this.owner = owner;
+        this.birthDate = birthDate;
+        if (visits != null){
+            this.visits = visits;}
+    }
+
     @Column(name = "name")
     private String name;
 
@@ -27,7 +39,13 @@ public class Pet extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @Override
+    public String toString() {
+        return petType.toString();
+    }
+
     @Column(name = "birth_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "pet")
