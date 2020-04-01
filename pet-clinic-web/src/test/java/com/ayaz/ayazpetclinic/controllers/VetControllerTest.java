@@ -33,8 +33,8 @@ class VetControllerTest {
     @BeforeEach
     void setUp() {
         vets = new HashSet<>();
-        vets.add(Vet.builder().id(1L).build());
-        vets.add(Vet.builder().id(2L).build());
+        vets.add(Vet.builder().Id(1L).build());
+        vets.add(Vet.builder().Id(2L).build());
 
         mockMvc = MockMvcBuilders.standaloneSetup(vetController)
                 .build();

@@ -1,13 +1,13 @@
 package com.ayaz.ayazpetclinic.services.map;
 
 import com.ayaz.ayazpetclinic.model.Owner;
-import com.ayaz.ayazpetclinic.services.PetService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class OwnerMapServiceTest {
 
@@ -19,7 +19,7 @@ class OwnerMapServiceTest {
     @BeforeEach
     void setUp() {
         ownerMapService = new OwnerMapService(new PetTypeMapService(),new PetMapService());
-        ownerMapService.save(Owner.builder().id(ownerId).lastName(lastName).build());
+        ownerMapService.save(Owner.builder().Id(ownerId).lastName(lastName).build());
     }
 
     @Test
@@ -49,7 +49,7 @@ class OwnerMapServiceTest {
     @Test
     void saveExistingId() {
         Long id = 2l;
-        Owner owner2 = Owner.builder().id(id).build();
+        Owner owner2 = Owner.builder().Id(id).build();
         Owner savedOwner = ownerMapService.save(owner2);
         assertEquals(id , savedOwner.getId());
     }

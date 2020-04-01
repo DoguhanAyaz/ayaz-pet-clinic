@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -27,6 +28,7 @@ public class PetController {
     private final PetService petService;
     private final PetTypeService petTypeService;
 
+
     public PetController(OwnerService ownerService, PetService petService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.petService = petService;
@@ -34,7 +36,7 @@ public class PetController {
     }
 
     @ModelAttribute("types")
-    public Collection<PetType> populatePetType() {
+    public Collection<PetType> populatePetType(Model model) {
         return petTypeService.findAll();
     }
 
@@ -64,7 +66,7 @@ public class PetController {
         }
         owner.getPets().add(pet);
         if (result.hasErrors()) {
-            model.addAttribute("pet", pet);
+            model.put("types", petTypeService.findAll());
             return CREATE_UPDATE_PET_FORM;
         } else {
             petService.save(pet);
@@ -75,21 +77,21 @@ public class PetController {
 
 
     @GetMapping("pets/{petId}/edit")
-    public String initUpdateForm(@PathVariable Long petId, Model model) {
+    public ModelAndView initUpdateForm(@PathVariable Long petId, Model model) {
+        ModelAndView modelAndView = new ModelAndView(CREATE_UPDATE_PET_FORM);
         Pet pet = petService.findById(petId);
-        model.addAttribute("pet", pet);
-        return CREATE_UPDATE_PET_FORM;
+        modelAndView.addObject(pet);
+        return modelAndView;
     }
 
     @PostMapping(("pets/{petId}/edit"))
-    public String processUpdateCreateForm(@Valid Pet pet, BindingResult result, Owner owner, Model model) {
+    public String processUpdateCreateForm(@Valid Pet pet, BindingResult result, Owner owner,Model model) {
         if (result.hasErrors()) {
-            pet.setOwner(owner);
             model.addAttribute("pet", pet);
             return CREATE_UPDATE_PET_FORM;
         } else {
+            pet.setOwner(owner);
             owner.getPets().add(pet);
-//            pet.setId(petId);
             petService.save(pet);
             return "redirect:/owners/" + owner.getId();
         }

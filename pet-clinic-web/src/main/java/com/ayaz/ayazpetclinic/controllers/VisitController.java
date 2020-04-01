@@ -32,7 +32,7 @@ public class VisitController {
         dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
             @Override
             public void setAsText(String text) throws IllegalArgumentException{
-                setValue(LocalDate.parse(text));
+                setValue(LocalDate.parse(text));//sor
             }
         });
 
@@ -49,15 +49,13 @@ public class VisitController {
     }
 
     @GetMapping("/visits/new")
-    public String initNewForm(@PathVariable("petId") Long peId, Model model) {
+    public String initNewForm(@PathVariable("petId") Long petId) {
         return CREATE_UPDATE_VISITS;
     }
 
     @PostMapping("/visits/new")
-    public String processCreateForm(@Valid Pet pet, BindingResult bindingResult, @Valid Visit visit, Model model) {
-        pet.getVisits().add(visit);
+    public String processCreateForm(@Valid Visit visit, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("visit", visit);
             return CREATE_UPDATE_VISITS;
         } else {
             visitService.save(visit);

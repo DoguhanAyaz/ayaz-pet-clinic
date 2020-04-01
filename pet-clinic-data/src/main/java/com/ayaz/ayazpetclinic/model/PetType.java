@@ -1,23 +1,22 @@
 package com.ayaz.ayazpetclinic.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
+@SuperBuilder
 @Table(name = "types")
 public class PetType extends BaseEntity {
-    @Builder
-    public PetType(Long Id, String name) {
-        super(Id);
-        this.name = name;
-    }
 
     @Column(name = "name")
     private String name;

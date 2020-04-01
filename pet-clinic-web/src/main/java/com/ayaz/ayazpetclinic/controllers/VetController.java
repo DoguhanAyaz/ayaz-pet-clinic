@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
@@ -23,7 +23,7 @@ public class VetController {
         dataBinder.setDisallowedFields("id");
     }
 
-    @RequestMapping({"/vets","vets/index","/vets/index.html","vets.html"})
+    @GetMapping({"/vets","vets/index","/vets/index.html","vets.html"})
     public String listVets(Model model){
 
         model.addAttribute("vets",vetService.findAll());

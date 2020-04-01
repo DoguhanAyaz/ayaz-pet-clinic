@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.Set;
 @Service
 @Slf4j
@@ -27,14 +26,13 @@ public class PetTypeSDJpaService implements PetTypeService {
 
     @Override
     public Set<PetType> findAll() {
-        Set<PetType> petTypes = new HashSet<>();
-        petTypeRepository.findAll().forEach(petTypes::add);
-
+        Set<PetType> petTypes = petTypeRepository.findAll();
         return petTypes;
     }
 
     @Override
     public PetType save(PetType object) {
+        //TO-DO Modelden taşı
         return petTypeRepository.save(object);
     }
 

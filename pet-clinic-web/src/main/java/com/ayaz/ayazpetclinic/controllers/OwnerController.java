@@ -36,7 +36,6 @@ public class OwnerController {
         model.addAttribute("owners", ownerService.findAll());
         return "owners/index";
     }
-
     @RequestMapping("/find")
     public String findOwners(Model model) {
         model.addAttribute("owner", Owner.builder().build());
@@ -78,7 +77,6 @@ public class OwnerController {
         } else {
             mav.setStatus(HttpStatus.NOT_FOUND);
         }
-
         return mav;
     }
 
@@ -107,6 +105,7 @@ public class OwnerController {
     @PostMapping("/{ownerId}/edit")
     public String processUpdateForm(@Valid Owner owner, BindingResult result, @PathVariable Long ownerId) {
         if (result.hasErrors()) {
+            owner.setId(ownerId);
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
             owner.setId(ownerId);

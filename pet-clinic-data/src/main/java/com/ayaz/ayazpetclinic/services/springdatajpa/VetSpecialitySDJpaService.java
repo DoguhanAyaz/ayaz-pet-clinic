@@ -35,6 +35,7 @@ public class VetSpecialitySDJpaService implements SpecialityService {
 
     @Override
     public Speciality save(Speciality object) {
+
         return specialityRepository.save(object);
     }
 

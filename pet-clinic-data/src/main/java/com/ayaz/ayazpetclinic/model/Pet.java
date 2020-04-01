@@ -1,6 +1,10 @@
 package com.ayaz.ayazpetclinic.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,21 +16,10 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "pets")
+@SuperBuilder
 public class Pet extends BaseEntity {
-
-    @Builder
-    public Pet(Long Id, String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
-        super(Id);
-        this.name = name;
-        this.petType = petType;
-        this.owner = owner;
-        this.birthDate = birthDate;
-        if (visits != null){
-            this.visits = visits;}
-    }
 
     @Column(name = "name")
     private String name;

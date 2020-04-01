@@ -35,7 +35,7 @@ class VetSDJpaServiceTest {
 
     @BeforeEach
     void setUp() {
-        returnVet = Vet.builder().id(1L).firstName("Alex").build();
+        returnVet = Vet.builder().Id(2L).firstName("Alex").build();
     }
 
     @Test
@@ -48,8 +48,8 @@ class VetSDJpaServiceTest {
     @Test
     void findAll() {
         Set<Vet> vetSet = new HashSet<>();
-        vetSet.add(Vet.builder().id(1L).build());
-        vetSet.add(Vet.builder().id(2L).build());
+        vetSet.add(Vet.builder().Id(1L).build());
+        vetSet.add(Vet.builder().Id(2L).build());
         when(vetRepository.findAll()).thenReturn(vetSet);
         Set<Vet> vets = service.findAll();
         assertNotNull(vets);
@@ -58,7 +58,7 @@ class VetSDJpaServiceTest {
 
     @Test
     void save() {
-        Vet saveVet = Vet.builder().id(1L).build();
+        Vet saveVet = Vet.builder().Id(1L).build();
         when(vetRepository.save(any())).thenReturn(saveVet);
         Vet savedVet = service.save(saveVet);
         assertNotNull(savedVet);
