@@ -5,7 +5,6 @@ import com.ayaz.ayazpetclinic.model.Visit;
 import com.ayaz.ayazpetclinic.services.PetService;
 import com.ayaz.ayazpetclinic.services.VisitService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.beans.PropertyEditorSupport;
 import java.time.LocalDate;
+import java.util.Map;
 
 @Controller
 @RequestMapping("owners/{ownerId}/pets/{petId}")
@@ -39,9 +39,9 @@ public class VisitController {
     }
 
     @ModelAttribute("visit")
-    public Visit loadPetWithVisit(@PathVariable("petId") Long petId, Model model) {
+    public Visit loadPetWithVisit(@PathVariable("petId") Long petId, Map<String , Object> model) {
         Pet pet = petService.findById(petId);
-        model.addAttribute("pet", pet);
+        model.put("pet", pet);
         Visit visit = new Visit();
         pet.getVisits().add(visit);
         visit.setPet(pet);
